@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Pookie Glassy Calculator ✨</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
+    /* ==========================================================
+       THEME VARIABLES
+       ========================================================== */
     :root {
       /* Pookie Clay Theme (Default - Image 1) */
       --bg-gradient: radial-gradient(circle at 50% 20%, #ffe4ec 0%, #ffd1df 45%, #ffb6ce 100%);
@@ -102,7 +102,7 @@
         inset 0 -4px 10px rgba(220, 120, 165, 0.3);
       --calc-radius: 48px;
 
-      --screen-bg: rgba(255, 255, 255, 0.5);
+      --screen-bg: rgba(255, 255, 255, 0.55);
       --screen-border: rgba(255, 255, 255, 0.85);
       --screen-shadow: 
         inset 0 2px 6px rgba(180, 70, 120, 0.15),
@@ -399,7 +399,8 @@
       user-select: none;
       -webkit-user-select: none;
       -webkit-tap-highlight-color: transparent;
-      font-family: 'Fredoka', 'Quicksand', -apple-system, sans-serif;
+      touch-action: manipulation;
+      font-family: 'Fredoka', 'Quicksand', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
     }
 
     body {
@@ -410,7 +411,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 16px;
+      padding: 12px;
       overflow-x: hidden;
       position: relative;
       transition: background 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -435,40 +436,40 @@
     }
 
     .orb-1 {
-      width: 320px;
-      height: 320px;
+      width: 300px;
+      height: 300px;
       background: var(--orb-1);
-      top: -60px;
-      left: -60px;
+      top: -50px;
+      left: -50px;
       animation-duration: 16s;
     }
 
     .orb-2 {
-      width: 380px;
-      height: 380px;
+      width: 360px;
+      height: 360px;
       background: var(--orb-2);
-      bottom: -100px;
-      right: -80px;
+      bottom: -90px;
+      right: -70px;
       animation-duration: 22s;
       animation-delay: -5s;
     }
 
     .orb-3 {
-      width: 260px;
-      height: 260px;
+      width: 240px;
+      height: 240px;
       background: var(--orb-3);
       bottom: 25%;
-      left: -60px;
+      left: -50px;
       animation-duration: 19s;
       animation-delay: -8s;
     }
 
     .orb-4 {
-      width: 220px;
-      height: 220px;
+      width: 200px;
+      height: 200px;
       background: var(--orb-4);
       top: 20%;
-      right: -40px;
+      right: -30px;
       animation-duration: 14s;
       animation-delay: -2s;
     }
@@ -494,9 +495,9 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 16px;
+      gap: 12px;
       width: 100%;
-      max-width: 390px;
+      max-width: 380px;
     }
 
     /* Top Navigation / Controls Bar */
@@ -505,7 +506,7 @@
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      padding: 8px 14px;
+      padding: 6px 12px;
       background: rgba(255, 255, 255, 0.45);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
@@ -527,8 +528,8 @@
     select#theme-picker {
       background: transparent;
       border: none;
-      font-size: 14px;
-      font-weight: 600;
+      font-size: 13px;
+      font-weight: 700;
       color: #4a2131;
       cursor: pointer;
       outline: none;
@@ -552,15 +553,15 @@
     }
 
     .tool-btn {
-      background: rgba(255, 255, 255, 0.6);
+      background: rgba(255, 255, 255, 0.65);
       border: 1px solid rgba(255, 255, 255, 0.8);
-      width: 34px;
-      height: 34px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 16px;
+      font-size: 15px;
       cursor: pointer;
       transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
@@ -590,7 +591,7 @@
       border: 3px solid var(--calc-body-border);
       border-radius: var(--calc-radius);
       box-shadow: var(--calc-shadow);
-      padding: 24px 20px 26px;
+      padding: 20px 18px 22px;
       position: relative;
       overflow: hidden;
       transition: all 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -602,7 +603,7 @@
       top: 0;
       left: 0;
       right: 0;
-      height: 50%;
+      height: 48%;
       background: linear-gradient(180deg, rgba(255, 255, 255, var(--gloss-opacity)) 0%, rgba(255, 255, 255, 0) 100%);
       pointer-events: none;
       border-radius: inherit;
@@ -615,20 +616,21 @@
       border: 2px solid var(--screen-border);
       border-radius: 28px;
       box-shadow: var(--screen-shadow);
-      padding: 12px 16px 14px;
-      margin-bottom: 22px;
+      padding: 10px 14px 12px;
+      margin-bottom: 18px;
       position: relative;
       z-index: 4;
       display: flex;
       flex-direction: column;
       align-items: center;
       transition: all 0.4s ease;
+      cursor: pointer;
     }
 
     /* Pookie Interactive Kawaii Face */
     .face-container {
-      width: 140px;
-      height: 48px;
+      width: 130px;
+      height: 42px;
       margin-bottom: 2px;
       cursor: pointer;
       position: relative;
@@ -660,16 +662,19 @@
 
     .pupil-sparkle {
       fill: #ffffff;
+      transform-box: fill-box;
       transition: transform 0.1s ease-out;
     }
 
     .pupil-sparkle-small {
       fill: #ffffff;
       opacity: 0.85;
+      transform-box: fill-box;
     }
 
     .eye-lid {
       fill: var(--screen-bg);
+      transform-box: fill-box;
       transform-origin: 50% 0%;
       transform: scaleY(0);
       transition: transform 0.12s ease;
@@ -679,13 +684,15 @@
     .cheek {
       fill: var(--face-blush);
       opacity: 0.85;
+      transform-box: fill-box;
+      transform-origin: 50% 50%;
       transition: fill 0.4s ease, opacity 0.3s ease, transform 0.3s ease;
-      filter: blur(0.6px);
+      filter: blur(0.5px);
     }
 
     .face-container:hover .cheek {
       opacity: 1;
-      transform: scale(1.15);
+      transform: scale(1.18);
     }
 
     /* Mouth */
@@ -709,10 +716,10 @@
     }
 
     .history-text {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 600;
       color: var(--screen-subtext);
-      min-height: 20px;
+      min-height: 18px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -722,7 +729,7 @@
     }
 
     .main-text {
-      font-size: 38px;
+      font-size: 36px;
       font-weight: 700;
       color: var(--screen-text);
       line-height: 1.15;
@@ -738,17 +745,17 @@
     .calc-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
+      gap: 10px;
       position: relative;
       z-index: 4;
     }
 
     /* Keys / Buttons */
     .key {
-      aspect-ratio: 1 / 1;
-      border-radius: 24px;
+      height: 56px;
+      border-radius: 22px;
       border: var(--pill-border);
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 700;
       cursor: pointer;
       position: relative;
@@ -789,7 +796,7 @@
       background: var(--btn-op-bg);
       color: var(--btn-op-color);
       box-shadow: var(--btn-op-shadow);
-      font-size: 26px;
+      font-size: 24px;
     }
 
     .key-op:active, .key-op.pressed {
@@ -801,7 +808,7 @@
       background: var(--btn-fn-bg);
       color: var(--btn-fn-color);
       box-shadow: var(--btn-fn-shadow);
-      font-size: 21px;
+      font-size: 19px;
     }
 
     .key-fn:active, .key-fn.pressed {
@@ -813,7 +820,7 @@
       background: var(--btn-eq-bg);
       color: var(--btn-eq-color);
       box-shadow: var(--btn-eq-shadow);
-      font-size: 28px;
+      font-size: 26px;
     }
 
     .key-eq:active, .key-eq.pressed {
@@ -824,13 +831,14 @@
     /* Toast Notification */
     .toast {
       position: fixed;
-      bottom: 24px;
-      background: rgba(255, 255, 255, 0.9);
+      bottom: 20px;
+      background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(12px);
-      padding: 10px 20px;
+      -webkit-backdrop-filter: blur(12px);
+      padding: 8px 18px;
       border-radius: 20px;
-      font-weight: 600;
-      font-size: 14px;
+      font-weight: 700;
+      font-size: 13px;
       color: #3b1828;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
       pointer-events: none;
@@ -847,13 +855,13 @@
 
     /* Floating Bubble Badges */
     .theme-banner {
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
       color: rgba(70, 30, 45, 0.7);
       display: flex;
       align-items: center;
       gap: 6px;
-      margin-top: 4px;
+      margin-top: 2px;
     }
 
     [data-theme="cyber-glass"] .theme-banner {
@@ -863,36 +871,13 @@
     /* Squishy Wobble Animation on Click */
     @keyframes squish {
       0% { transform: scale(1); }
-      35% { transform: scale(1.15, 0.88); }
+      35% { transform: scale(1.14, 0.88); }
       65% { transform: scale(0.92, 1.12); }
       100% { transform: scale(1); }
     }
 
     .squish {
       animation: squish 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    /* Responsive scaling */
-    @media (max-height: 700px) {
-      .calculator {
-        padding: 18px 16px 20px;
-      }
-      .screen-housing {
-        padding: 8px 14px 10px;
-        margin-bottom: 16px;
-      }
-      .face-container {
-        height: 40px;
-      }
-      .main-text {
-        font-size: 32px;
-      }
-      .calc-grid {
-        gap: 8px;
-      }
-      .key {
-        border-radius: 20px;
-      }
     }
   </style>
 </head>
@@ -914,7 +899,7 @@
     <div class="top-toolbar">
       <div class="theme-select-wrap">
         <span class="theme-icon" id="theme-emoji">🎀</span>
-        <select id="theme-picker" aria-label="Select Theme">
+        <select id="theme-picker" aria-label="Select Theme" onchange="handleThemeChange(this.value)">
           <option value="pookie-clay" selected>Pookie Clay (Image 1)</option>
           <option value="crystal-glass">Crystal Glass (Image 2)</option>
           <option value="strawberry-jelly">Strawberry Jelly</option>
@@ -925,8 +910,8 @@
       </div>
 
       <div class="toolbar-actions">
-        <button class="tool-btn" id="sound-btn" title="Toggle Sound">🔊</button>
-        <button class="tool-btn" id="copy-btn" title="Copy Result">📋</button>
+        <button class="tool-btn" id="sound-btn" onclick="toggleSound()" title="Toggle Sound">🔊</button>
+        <button class="tool-btn" id="copy-btn" onclick="copyResult()" title="Copy Result">📋</button>
       </div>
     </div>
 
@@ -936,9 +921,9 @@
       <div class="calc-sheen"></div>
 
       <!-- Recessed Screen Area -->
-      <div class="screen-housing">
+      <div class="screen-housing" onclick="boopFace()" title="Click face or screen to boop! 💕">
         <!-- Interactive Pookie Face (Blinks, Tracks Mouse, Expresses Emotion) -->
-        <div class="face-container" id="pookie-face" title="Boop my nose! 💕">
+        <div class="face-container" id="pookie-face">
           <svg class="face-svg" viewBox="0 0 160 55" id="face-svg">
             <!-- Cheeks -->
             <ellipse class="cheek" id="cheek-left" cx="24" cy="36" rx="9" ry="6" />
@@ -980,37 +965,37 @@
         </div>
       </div>
 
-      <!-- Keypad Grid -->
-      <div class="calc-grid">
+      <!-- Keypad Grid (Full with inline onclick fallbacks) -->
+      <div class="calc-grid" id="calc-grid">
         <!-- Row 1 -->
-        <button class="key key-fn" data-action="clear" title="Clear">C</button>
-        <button class="key key-fn" data-action="delete" title="Backspace">DEL</button>
-        <button class="key key-fn" data-action="percent" title="Percent">%</button>
-        <button class="key key-op" data-action="op" data-op="/" title="Divide">÷</button>
+        <button class="key key-fn" data-action="clear" onclick="clearAll()" title="Clear">C</button>
+        <button class="key key-fn" data-action="delete" onclick="deleteLast()" title="Backspace">DEL</button>
+        <button class="key key-fn" data-action="percent" onclick="applyPercent()" title="Percent">%</button>
+        <button class="key key-op" data-action="op" data-op="/" onclick="setOp('/')" title="Divide">÷</button>
 
         <!-- Row 2 -->
-        <button class="key key-num" data-num="7">7</button>
-        <button class="key key-num" data-num="8">8</button>
-        <button class="key key-num" data-num="9">9</button>
-        <button class="key key-op" data-action="op" data-op="*" title="Multiply">×</button>
+        <button class="key key-num" data-num="7" onclick="appendNum('7')">7</button>
+        <button class="key key-num" data-num="8" onclick="appendNum('8')">8</button>
+        <button class="key key-num" data-num="9" onclick="appendNum('9')">9</button>
+        <button class="key key-op" data-action="op" data-op="*" onclick="setOp('*')" title="Multiply">×</button>
 
         <!-- Row 3 -->
-        <button class="key key-num" data-num="4">4</button>
-        <button class="key key-num" data-num="5">5</button>
-        <button class="key key-num" data-num="6">6</button>
-        <button class="key key-op" data-action="op" data-op="-" title="Subtract">−</button>
+        <button class="key key-num" data-num="4" onclick="appendNum('4')">4</button>
+        <button class="key key-num" data-num="5" onclick="appendNum('5')">5</button>
+        <button class="key key-num" data-num="6" onclick="appendNum('6')">6</button>
+        <button class="key key-op" data-action="op" data-op="-" onclick="setOp('-')" title="Subtract">−</button>
 
         <!-- Row 4 -->
-        <button class="key key-num" data-num="1">1</button>
-        <button class="key key-num" data-num="2">2</button>
-        <button class="key key-num" data-num="3">3</button>
-        <button class="key key-op" data-action="op" data-op="+" title="Add">+</button>
+        <button class="key key-num" data-num="1" onclick="appendNum('1')">1</button>
+        <button class="key key-num" data-num="2" onclick="appendNum('2')">2</button>
+        <button class="key key-num" data-num="3" onclick="appendNum('3')">3</button>
+        <button class="key key-op" data-action="op" data-op="+" onclick="setOp('+')" title="Add">+</button>
 
         <!-- Row 5 -->
-        <button class="key key-fn" data-action="negate" title="Positive/Negative">±</button>
-        <button class="key key-num" data-num="0">0</button>
-        <button class="key key-num" data-action="dot">.</button>
-        <button class="key key-eq" data-action="calculate" title="Equal">=</button>
+        <button class="key key-fn" data-action="negate" onclick="toggleSign()" title="Positive/Negative">±</button>
+        <button class="key key-num" data-num="0" onclick="appendNum('0')">0</button>
+        <button class="key key-num" data-action="dot" onclick="appendDot()">.</button>
+        <button class="key key-eq" data-action="calculate" onclick="calculate(true)" title="Equal">=</button>
       </div>
     </div>
 
@@ -1025,7 +1010,28 @@
 
   <script>
     /* ==========================================================
-       STATE & VARIABLES
+       SAFE STORAGE WRAPPER (Never throws SecurityError)
+       ========================================================== */
+    const safeStorage = {
+      get(key, fallback = null) {
+        try {
+          if (typeof window !== "undefined" && window.localStorage) {
+            return window.localStorage.getItem(key) ?? fallback;
+          }
+        } catch (e) {}
+        return fallback;
+      },
+      set(key, val) {
+        try {
+          if (typeof window !== "undefined" && window.localStorage) {
+            window.localStorage.setItem(key, val);
+          }
+        } catch (e) {}
+      }
+    };
+
+    /* ==========================================================
+       CALCULATOR STATE
        ========================================================== */
     let currentInput = "0";
     let previousInput = null;
@@ -1033,12 +1039,12 @@
     let shouldResetInput = false;
     let soundEnabled = true;
 
+    // DOM Elements
     const mainDisplay = document.getElementById("main-display");
     const historyDisplay = document.getElementById("history-display");
     const themePicker = document.getElementById("theme-picker");
     const themeEmoji = document.getElementById("theme-emoji");
     const soundBtn = document.getElementById("sound-btn");
-    const copyBtn = document.getElementById("copy-btn");
     const toast = document.getElementById("toast");
     const pookieFace = document.getElementById("pookie-face");
     const mouth = document.getElementById("mouth");
@@ -1049,240 +1055,16 @@
     const lidLeft = document.getElementById("lid-left");
     const lidRight = document.getElementById("lid-right");
     const canvas = document.getElementById("particle-canvas");
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas ? canvas.getContext("2d") : null;
 
     /* ==========================================================
-       THEME MANAGEMENT
+       PARTICLE ENGINE (Declared before themes/actions)
        ========================================================== */
-    const themeEmojis = {
-      "pookie-clay": "🎀",
-      "crystal-glass": "💎",
-      "strawberry-jelly": "🍓",
-      "matcha": "🍵",
-      "lavender": "💜",
-      "cyber-glass": "🌙"
-    };
-
-    function applyTheme(themeName) {
-      if (themeName === "pookie-clay") {
-        document.documentElement.removeAttribute("data-theme");
-      } else {
-        document.documentElement.setAttribute("data-theme", themeName);
-      }
-      themeEmoji.textContent = themeEmojis[themeName] || "✨";
-      localStorage.setItem("pookie_calc_theme", themeName);
-      celebrateSparkles(window.innerWidth / 2, window.innerHeight / 2, 20);
-    }
-
-    themePicker.addEventListener("change", (e) => {
-      applyTheme(e.target.value);
-      playSound("pop");
-    });
-
-    // Load saved theme
-    const savedTheme = localStorage.getItem("pookie_calc_theme") || "pookie-clay";
-    themePicker.value = savedTheme;
-    applyTheme(savedTheme);
-
-    /* ==========================================================
-       CUTE SYNTHESIZED SOUND EFFECTS (Web Audio API)
-       Zero external audio files, works 100% offline!
-       ========================================================== */
-    let audioCtx = null;
-
-    function getAudioContext() {
-      if (!audioCtx) {
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      }
-      if (audioCtx.state === "suspended") {
-        audioCtx.resume();
-      }
-      return audioCtx;
-    }
-
-    function playSound(type) {
-      if (!soundEnabled) return;
-      try {
-        const ctx = getAudioContext();
-        const now = ctx.currentTime;
-
-        if (type === "pop") {
-          // Soft wooden bubble click
-          const osc = ctx.createOscillator();
-          const gain = ctx.createGain();
-          osc.type = "sine";
-          osc.frequency.setValueAtTime(580, now);
-          osc.frequency.exponentialRampToValueAtTime(260, now + 0.08);
-          gain.gain.setValueAtTime(0.2, now);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
-          osc.connect(gain);
-          gain.connect(ctx.destination);
-          osc.start(now);
-          osc.stop(now + 0.08);
-
-        } else if (type === "op") {
-          // Cheerful chirpy ping
-          const osc = ctx.createOscillator();
-          const gain = ctx.createGain();
-          osc.type = "triangle";
-          osc.frequency.setValueAtTime(440, now);
-          osc.frequency.exponentialRampToValueAtTime(880, now + 0.1);
-          gain.gain.setValueAtTime(0.18, now);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
-          osc.connect(gain);
-          gain.connect(ctx.destination);
-          osc.start(now);
-          osc.stop(now + 0.1);
-
-        } else if (type === "equal") {
-          // Happy 3-tone arpeggio (C5 -> E5 -> G5)
-          const notes = [523.25, 659.25, 783.99, 1046.50];
-          notes.forEach((freq, idx) => {
-            const osc = ctx.createOscillator();
-            const gain = ctx.createGain();
-            const startTime = now + idx * 0.06;
-            osc.type = "sine";
-            osc.frequency.setValueAtTime(freq, startTime);
-            gain.gain.setValueAtTime(0.15, startTime);
-            gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.22);
-            osc.connect(gain);
-            gain.connect(ctx.destination);
-            osc.start(startTime);
-            osc.stop(startTime + 0.22);
-          });
-
-        } else if (type === "clear") {
-          // Slide down cute boop
-          const osc = ctx.createOscillator();
-          const gain = ctx.createGain();
-          osc.type = "sine";
-          osc.frequency.setValueAtTime(600, now);
-          osc.frequency.exponentialRampToValueAtTime(150, now + 0.12);
-          gain.gain.setValueAtTime(0.2, now);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
-          osc.connect(gain);
-          gain.connect(ctx.destination);
-          osc.start(now);
-          osc.stop(now + 0.12);
-
-        } else if (type === "boop") {
-          // Cute squeak
-          const osc = ctx.createOscillator();
-          const gain = ctx.createGain();
-          osc.type = "sine";
-          osc.frequency.setValueAtTime(880, now);
-          osc.frequency.exponentialRampToValueAtTime(1200, now + 0.08);
-          gain.gain.setValueAtTime(0.18, now);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
-          osc.connect(gain);
-          gain.connect(ctx.destination);
-          osc.start(now);
-          osc.stop(now + 0.08);
-        }
-      } catch (err) {
-        console.error("Audio error", err);
-      }
-    }
-
-    // Sound toggle
-    soundBtn.addEventListener("click", () => {
-      soundEnabled = !soundEnabled;
-      soundBtn.textContent = soundEnabled ? "🔊" : "🔇";
-      showToast(soundEnabled ? "Sound On 🎵" : "Muted 🤫");
-    });
-
-    /* ==========================================================
-       POOKIE FACE INTERACTIVITY & MOODS
-       ========================================================== */
-    const mouthShapes = {
-      happy: "M 72 26 Q 80 34 88 26",
-      veryHappy: "M 70 25 Q 80 40 90 25",
-      surprised: "M 76 30 A 4 5 0 1 0 76 30.1 Z",
-      wink: "M 72 27 Q 80 33 88 27",
-      error: "M 72 32 Q 80 24 88 32",
-      kiss: "M 76 29 Q 80 33 84 29"
-    };
-
-    function setFaceExpression(mood, duration = 1200) {
-      if (mouthShapes[mood]) {
-        mouth.setAttribute("d", mouthShapes[mood]);
-      }
-
-      if (mood === "veryHappy" || mood === "kiss") {
-        cheekLeft.style.transform = "scale(1.35)";
-        cheekRight.style.transform = "scale(1.35)";
-      } else {
-        cheekLeft.style.transform = "scale(1)";
-        cheekRight.style.transform = "scale(1)";
-      }
-
-      if (duration > 0) {
-        clearTimeout(setFaceExpression._timer);
-        setFaceExpression._timer = setTimeout(() => {
-          mouth.setAttribute("d", mouthShapes.happy);
-          cheekLeft.style.transform = "scale(1)";
-          cheekRight.style.transform = "scale(1)";
-        }, duration);
-      }
-    }
-
-    // Natural blinking loop
-    function naturalBlink() {
-      lidLeft.style.transform = "scaleY(1)";
-      lidRight.style.transform = "scaleY(1)";
-
-      setTimeout(() => {
-        lidLeft.style.transform = "scaleY(0)";
-        lidRight.style.transform = "scaleY(0)";
-      }, 150);
-
-      const nextBlink = Math.random() * 4000 + 2500;
-      setTimeout(naturalBlink, nextBlink);
-    }
-    setTimeout(naturalBlink, 2000);
-
-    // Boop the face!
-    pookieFace.addEventListener("click", (e) => {
-      setFaceExpression("veryHappy", 1800);
-      playSound("boop");
-      pookieFace.classList.add("squish");
-      setTimeout(() => pookieFace.classList.remove("squish"), 400);
-
-      const rect = pookieFace.getBoundingClientRect();
-      celebrateSparkles(rect.left + rect.width / 2, rect.top + rect.height / 2, 16);
-      showToast("Hehe! You booped me! 💕");
-    });
-
-    // Pupil cursor tracking
-    window.addEventListener("mousemove", (e) => {
-      const faceRect = pookieFace.getBoundingClientRect();
-      const faceCenterX = faceRect.left + faceRect.width / 2;
-      const faceCenterY = faceRect.top + faceRect.height / 2;
-
-      const angle = Math.atan2(e.clientY - faceCenterY, e.clientX - faceCenterX);
-      const distance = Math.min(3.5, Math.hypot(e.clientX - faceCenterX, e.clientY - faceCenterY) / 60);
-
-      const offsetX = Math.cos(angle) * distance;
-      const offsetY = Math.sin(angle) * distance;
-
-      pupilLeft.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-      pupilRight.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-    });
-
-    /* ==========================================================
-       SPARKLE & HEART CONFETTI ENGINE
-       ========================================================== */
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    window.addEventListener("resize", resizeCanvas);
-    resizeCanvas();
-
     const particles = [];
     const sparkleColors = ["#ff7ba5", "#ffa3c0", "#ffc2d4", "#c084fc", "#ffd700", "#ffffff"];
 
     function celebrateSparkles(x, y, count = 25) {
+      if (!ctx) return;
       for (let i = 0; i < count; i++) {
         const angle = Math.random() * Math.PI * 2;
         const speed = Math.random() * 5 + 2;
@@ -1303,26 +1085,247 @@
       }
     }
 
-    function drawHeart(ctx, x, y, size) {
-      ctx.beginPath();
+    /* ==========================================================
+       THEMES
+       ========================================================== */
+    const themeEmojis = {
+      "pookie-clay": "🎀",
+      "crystal-glass": "💎",
+      "strawberry-jelly": "🍓",
+      "matcha": "🍵",
+      "lavender": "💜",
+      "cyber-glass": "🌙"
+    };
+
+    function applyTheme(themeName, triggerSparkles = false) {
+      if (!themeName || themeName === "pookie-clay") {
+        document.documentElement.removeAttribute("data-theme");
+      } else {
+        document.documentElement.setAttribute("data-theme", themeName);
+      }
+      if (themeEmoji) {
+        themeEmoji.textContent = themeEmojis[themeName] || "✨";
+      }
+      safeStorage.set("pookie_calc_theme", themeName);
+      if (triggerSparkles) {
+        celebrateSparkles(window.innerWidth / 2, window.innerHeight / 2, 20);
+      }
+    }
+
+    function handleThemeChange(val) {
+      applyTheme(val, true);
+      playSound("pop");
+    }
+
+    // Initialize saved theme safely
+    const savedTheme = safeStorage.get("pookie_calc_theme", "pookie-clay");
+    if (themePicker) themePicker.value = savedTheme;
+    applyTheme(savedTheme, false);
+
+    /* ==========================================================
+       AUDIO SYNTHESIZER (Web Audio API)
+       Protected against all browser permission/sandbox blocks
+       ========================================================== */
+    let audioCtx = null;
+
+    function playSound(type) {
+      if (!soundEnabled) return;
+      try {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContextClass) return;
+        if (!audioCtx) {
+          audioCtx = new AudioContextClass();
+        }
+        if (audioCtx.state === "suspended") {
+          audioCtx.resume().catch(() => {});
+        }
+        const now = audioCtx.currentTime;
+
+        if (type === "pop") {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = "sine";
+          osc.frequency.setValueAtTime(600, now);
+          osc.frequency.exponentialRampToValueAtTime(260, now + 0.08);
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(now);
+          osc.stop(now + 0.08);
+        } else if (type === "op") {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = "triangle";
+          osc.frequency.setValueAtTime(450, now);
+          osc.frequency.exponentialRampToValueAtTime(850, now + 0.1);
+          gain.gain.setValueAtTime(0.18, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(now);
+          osc.stop(now + 0.1);
+        } else if (type === "equal") {
+          const notes = [523.25, 659.25, 783.99, 1046.50];
+          notes.forEach((freq, idx) => {
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            const start = now + idx * 0.055;
+            osc.type = "sine";
+            osc.frequency.setValueAtTime(freq, start);
+            gain.gain.setValueAtTime(0.14, start);
+            gain.gain.exponentialRampToValueAtTime(0.001, start + 0.22);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start(start);
+            osc.stop(start + 0.22);
+          });
+        } else if (type === "clear") {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = "sine";
+          osc.frequency.setValueAtTime(600, now);
+          osc.frequency.exponentialRampToValueAtTime(140, now + 0.12);
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(now);
+          osc.stop(now + 0.12);
+        } else if (type === "boop") {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = "sine";
+          osc.frequency.setValueAtTime(880, now);
+          osc.frequency.exponentialRampToValueAtTime(1200, now + 0.08);
+          gain.gain.setValueAtTime(0.18, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(now);
+          osc.stop(now + 0.08);
+        }
+      } catch (err) {}
+    }
+
+    function toggleSound() {
+      soundEnabled = !soundEnabled;
+      if (soundBtn) {
+        soundBtn.textContent = soundEnabled ? "🔊" : "🔇";
+      }
+      showToast(soundEnabled ? "Sound On 🎵" : "Muted 🤫");
+    }
+
+    /* ==========================================================
+       POOKIE FACE MOODS & EXPRESSIONS
+       ========================================================== */
+    const mouthShapes = {
+      happy: "M 72 26 Q 80 34 88 26",
+      veryHappy: "M 70 25 Q 80 40 90 25",
+      surprised: "M 76 30 A 4 5 0 1 0 76 30.1 Z",
+      wink: "M 72 27 Q 80 33 88 27",
+      error: "M 72 32 Q 80 24 88 32"
+    };
+
+    let faceTimer = null;
+    function setFaceExpression(mood, duration = 1200) {
+      if (!mouth) return;
+      if (mouthShapes[mood]) {
+        mouth.setAttribute("d", mouthShapes[mood]);
+      }
+      if (cheekLeft && cheekRight) {
+        if (mood === "veryHappy") {
+          cheekLeft.style.transform = "scale(1.35)";
+          cheekRight.style.transform = "scale(1.35)";
+        } else {
+          cheekLeft.style.transform = "scale(1)";
+          cheekRight.style.transform = "scale(1)";
+        }
+      }
+      if (duration > 0) {
+        clearTimeout(faceTimer);
+        faceTimer = setTimeout(() => {
+          if (mouth) mouth.setAttribute("d", mouthShapes.happy);
+          if (cheekLeft) cheekLeft.style.transform = "scale(1)";
+          if (cheekRight) cheekRight.style.transform = "scale(1)";
+        }, duration);
+      }
+    }
+
+    // Natural blinking loop
+    function naturalBlink() {
+      if (lidLeft && lidRight) {
+        lidLeft.style.transform = "scaleY(1)";
+        lidRight.style.transform = "scaleY(1)";
+        setTimeout(() => {
+          if (lidLeft) lidLeft.style.transform = "scaleY(0)";
+          if (lidRight) lidRight.style.transform = "scaleY(0)";
+        }, 150);
+      }
+      const nextBlink = Math.random() * 4000 + 2500;
+      setTimeout(naturalBlink, nextBlink);
+    }
+    setTimeout(naturalBlink, 2000);
+
+    // Boop face action
+    function boopFace() {
+      setFaceExpression("veryHappy", 1800);
+      playSound("boop");
+      if (pookieFace) {
+        pookieFace.classList.add("squish");
+        setTimeout(() => pookieFace.classList.remove("squish"), 400);
+        const rect = pookieFace.getBoundingClientRect();
+        celebrateSparkles(rect.left + rect.width / 2, rect.top + rect.height / 2, 20);
+      }
+      showToast("Hehe! You booped me! 💕");
+    }
+
+    // Mouse tracking for pupils
+    window.addEventListener("mousemove", (e) => {
+      if (!pookieFace || !pupilLeft || !pupilRight) return;
+      const rect = pookieFace.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const angle = Math.atan2(e.clientY - cy, e.clientX - cx);
+      const dist = Math.min(3.5, Math.hypot(e.clientX - cx, e.clientY - cy) / 60);
+      const ox = Math.cos(angle) * dist;
+      const oy = Math.sin(angle) * dist;
+      pupilLeft.style.transform = `translate(${ox}px, ${oy}px)`;
+      pupilRight.style.transform = `translate(${ox}px, ${oy}px)`;
+    });
+
+    /* ==========================================================
+       SPARKLE CONFETTI CANVAS
+       ========================================================== */
+    function resizeCanvas() {
+      if (!canvas) return;
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    function drawHeart(c, x, y, size) {
+      c.beginPath();
       const topCurveHeight = size * 0.3;
-      ctx.moveTo(x, y + topCurveHeight);
-      ctx.bezierCurveTo(x, y, x - size / 2, y, x - size / 2, y + topCurveHeight);
-      ctx.bezierCurveTo(x - size / 2, y + (size + topCurveHeight) / 2, x, y + size, x, y + size);
-      ctx.bezierCurveTo(x, y + size, x + size / 2, y + (size + topCurveHeight) / 2, x + size / 2, y + topCurveHeight);
-      ctx.bezierCurveTo(x + size / 2, y, x, y, x, y + topCurveHeight);
-      ctx.closePath();
-      ctx.fill();
+      c.moveTo(x, y + topCurveHeight);
+      c.bezierCurveTo(x, y, x - size / 2, y, x - size / 2, y + topCurveHeight);
+      c.bezierCurveTo(x - size / 2, y + (size + topCurveHeight) / 2, x, y + size, x, y + size);
+      c.bezierCurveTo(x, y + size, x + size / 2, y + (size + topCurveHeight) / 2, x + size / 2, y + topCurveHeight);
+      c.bezierCurveTo(x + size / 2, y, x, y, x, y + topCurveHeight);
+      c.closePath();
+      c.fill();
     }
 
     function renderParticles() {
+      if (!ctx || !canvas) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       for (let i = particles.length - 1; i >= 0; i--) {
         const p = particles[i];
         p.x += p.vx;
         p.y += p.vy;
-        p.vy += 0.12; // gravity
+        p.vy += 0.12;
         p.rotation += p.vRot;
         p.life -= p.decay;
         p.alpha = Math.max(0, p.life);
@@ -1336,7 +1339,6 @@
         if (p.isHeart) {
           drawHeart(ctx, -p.size / 2, -p.size / 2, p.size);
         } else {
-          // 4-point star sparkle
           ctx.beginPath();
           for (let s = 0; s < 4; s++) {
             ctx.lineTo(Math.cos(s * Math.PI / 2) * p.size, Math.sin(s * Math.PI / 2) * p.size);
@@ -1357,25 +1359,27 @@
     requestAnimationFrame(renderParticles);
 
     /* ==========================================================
-       CALCULATOR LOGIC
+       CALCULATOR CORE LOGIC
        ========================================================== */
     function updateDisplay() {
+      if (!mainDisplay) return;
       mainDisplay.textContent = currentInput;
 
-      // Dynamic font size adjusting for long numbers
       if (currentInput.length > 11) {
         mainDisplay.style.fontSize = "22px";
       } else if (currentInput.length > 8) {
         mainDisplay.style.fontSize = "28px";
       } else {
-        mainDisplay.style.fontSize = "38px";
+        mainDisplay.style.fontSize = "36px";
       }
 
-      if (previousInput !== null && currentOperation) {
-        const opSymbol = currentOperation === "*" ? "×" : currentOperation === "/" ? "÷" : currentOperation === "-" ? "−" : "+";
-        historyDisplay.textContent = `${previousInput} ${opSymbol}`;
-      } else {
-        historyDisplay.textContent = "";
+      if (historyDisplay) {
+        if (previousInput !== null && currentOperation) {
+          const opSymbol = currentOperation === "*" ? "×" : currentOperation === "/" ? "÷" : currentOperation === "-" ? "−" : "+";
+          historyDisplay.textContent = `${previousInput} ${opSymbol}`;
+        } else {
+          historyDisplay.textContent = "";
+        }
       }
     }
 
@@ -1446,7 +1450,6 @@
       if (currentInput === "Error") return;
       const val = parseFloat(currentInput);
       if (previousInput !== null && currentOperation) {
-        // e.g., 200 + 10% = 200 + 20
         const percentVal = (previousInput * val) / 100;
         currentInput = cleanNumber(percentVal);
       } else {
@@ -1505,7 +1508,6 @@
           playSound("equal");
           setFaceExpression("veryHappy", 2500);
 
-          // Launch sparkles from equal button
           const eqKey = document.querySelector(".key-eq");
           if (eqKey) {
             const rect = eqKey.getBoundingClientRect();
@@ -1521,40 +1523,7 @@
     }
 
     /* ==========================================================
-       BUTTON EVENT BINDINGS
-       ========================================================== */
-    document.querySelectorAll(".key").forEach((key) => {
-      key.addEventListener("click", (e) => {
-        // Trigger squish bounce
-        key.classList.add("squish");
-        setTimeout(() => key.classList.remove("squish"), 350);
-
-        const num = key.dataset.num;
-        const action = key.dataset.action;
-        const op = key.dataset.op;
-
-        if (num !== undefined) {
-          appendNum(num);
-        } else if (action === "dot") {
-          appendDot();
-        } else if (action === "clear") {
-          clearAll();
-        } else if (action === "delete") {
-          deleteLast();
-        } else if (action === "negate") {
-          toggleSign();
-        } else if (action === "percent") {
-          applyPercent();
-        } else if (action === "op") {
-          setOp(op);
-        } else if (action === "calculate") {
-          calculate(true);
-        }
-      });
-    });
-
-    /* ==========================================================
-       KEYBOARD SHORTCUTS
+       KEYBOARD SUPPORT
        ========================================================== */
     window.addEventListener("keydown", (e) => {
       let keySelector = null;
@@ -1562,7 +1531,7 @@
       if (e.key >= "0" && e.key <= "9") {
         appendNum(e.key);
         keySelector = `[data-num="${e.key}"]`;
-      } else if (e.key === ".") {
+      } else if (e.key === "." || e.key === ",") {
         appendDot();
         keySelector = `[data-action="dot"]`;
       } else if (e.key === "+" || e.key === "-" || e.key === "*" || e.key === "/") {
@@ -1583,7 +1552,6 @@
         keySelector = `[data-action="percent"]`;
       }
 
-      // Visual press-down animation for keyboard
       if (keySelector) {
         const btn = document.querySelector(keySelector);
         if (btn) {
@@ -1594,29 +1562,63 @@
     });
 
     /* ==========================================================
-       CLIPBOARD COPY & TOAST
+       CLIPBOARD & TOAST (Works offline & in all browsers)
        ========================================================== */
+    let toastTimer = null;
     function showToast(message) {
+      if (!toast) return;
       toast.textContent = message;
       toast.classList.add("show");
-      clearTimeout(showToast._timer);
-      showToast._timer = setTimeout(() => {
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
         toast.classList.remove("show");
       }, 2000);
     }
 
-    copyBtn.addEventListener("click", () => {
-      if (currentInput && currentInput !== "Error") {
-        navigator.clipboard.writeText(currentInput).then(() => {
-          playSound("pop");
-          showToast(`Copied ${currentInput} to clipboard! 💕`);
-        }).catch(() => {
-          showToast("Could not copy! 😿");
-        });
-      }
-    });
+    function copyResult() {
+      if (!currentInput || currentInput === "Error") return;
+      playSound("pop");
 
-    // Initialize display
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(currentInput)
+          .then(() => showToast(`Copied ${currentInput} to clipboard! 💕`))
+          .catch(() => fallbackCopy(currentInput));
+      } else {
+        fallbackCopy(currentInput);
+      }
+    }
+
+    function fallbackCopy(text) {
+      try {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        document.body.removeChild(ta);
+        showToast(`Copied ${text}! 💕`);
+      } catch (err) {
+        showToast(`Result: ${text} 💕`);
+      }
+    }
+
+    // Expose functions globally for inline onclick attributes
+    window.appendNum = appendNum;
+    window.setOp = setOp;
+    window.calculate = calculate;
+    window.clearAll = clearAll;
+    window.deleteLast = deleteLast;
+    window.appendDot = appendDot;
+    window.toggleSign = toggleSign;
+    window.applyPercent = applyPercent;
+    window.boopFace = boopFace;
+    window.handleThemeChange = handleThemeChange;
+    window.toggleSound = toggleSound;
+    window.copyResult = copyResult;
+
+    // Initialize display on load
     updateDisplay();
   </script>
 </body>
