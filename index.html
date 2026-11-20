@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace;
+      -webkit-font-smoothing: antialiased;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #f0f0f0;
+    }
+    .calculator {
+      width: 300px;
+      background: #ffffff;
+      border: 2px solid #222222;
+      padding: 12px;
+    }
+    #display {
+      width: 100%;
+      height: 56px;
+      background: #fafafa;
+      border: 1px solid #999999;
+      margin-bottom: 12px;
+      padding: 8px 12px;
+      font-size: 28px;
+      text-align: right;
+      color: #111111;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      user-select: all;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+    }
+    button {
+      height: 50px;
+      font-size: 20px;
+      font-weight: 500;
+      background: #e8e8e8;
+      color: #000000;
+      border: 1px solid #777777;
+      cursor: pointer;
+      user-select: none;
+    }
+    button:active {
+      background: #cccccc;
+    }
+    button.op {
+      background: #d4d4d4;
+      font-weight: bold;
+    }
+    button.op:active {
+      background: #bbbbbb;
+    }
+    button.equal {
+      background: #333333;
+      color: #ffffff;
+      border-color: #000000;
+    }
+    button.equal:active {
+      background: #111111;
+    }
+    button.clear {
+      background: #e0e0e0;
+      color: #b00000;
+      font-weight: bold;
+    }
+    .span-2 {
+      grid-column: span 2;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <div id="display">0</div>
+    <div class="grid">
+      <button class="clear" onclick="clearAll()">C</button>
+      <button onclick="deleteLast()">DEL</button>
+      <button class="op" onclick="setOp('/')">/</button>
+      <button class="op" onclick="setOp('*')">*</button>
+
+      <button onclick="appendNum('7')">7</button>
+      <button onclick="appendNum('8')">8</button>
+      <button onclick="appendNum('9')">9</button>
+      <button class="op" onclick="setOp('-')">-</button>
+
+      <button onclick="appendNum('4')">4</button>
+      <button onclick="appendNum('5')">5</button>
+      <button onclick="appendNum('6')">6</button>
+      <button class="op" onclick="setOp('+')">+</button>
+
+      <button onclick="appendNum('1')">1</button>
+      <button onclick="appendNum('2')">2</button>
+      <button onclick="appendNum('3')">3</button>
+      <button class="equal" onclick="calculate()">=</button>
+
+      <button class="span-2" onclick="appendNum('0')">0</button>
+      <button onclick="appendDot()">.</button>
+      <button class="equal" onclick="calculate()">=</button>
+    </div>
+  </div>
+
+  <script>
+    let currentInput = "0";
+    let previousInput = null;
+    let operation = null;
+    let shouldResetInput = false;
+
+    const display = document.getElementById("display");
+
+    function updateDisplay() {
+      display.textContent = currentInput;
+    }
+
+    function clearAll() {
+      currentInput = "0";
+      previousInput = null;
+      operation = null;
+      shouldResetInput = false;
+      updateDisplay();
+    }
+
+    function deleteLast() {
+      if (shouldResetInput || currentInput === "Error") {
+        clearAll();
+        return;
+      }
+      if (currentInput.length > 1) {
+        currentInput = currentInput.slice(0, -1);
+      } else {
+        currentInput = "0";
+      }
+      updateDisplay();
+    }
+
+    function appendNum(num) {
+      if (currentInput === "Error" || shouldResetInput) {
+        currentInput = num;
+        shouldResetInput = false;
+      } else {
+        currentInput = currentInput === "0" ? num : currentInput + num;
+      }
+      updateDisplay();
+    }
+
+    function appendDot() {
+      if (shouldResetInput || currentInput === "Error") {
+        currentInput = "0.";
+        shouldResetInput = false;
+      } else if (!currentInput.includes(".")) {
+        currentInput += ".";
+      }
+      updateDisplay();
+    }
+
+    function compute(a, b, op) {
+      switch (op) {
+        case "+": return a + b;
+        case "-": return a - b;
+        case "*": return a * b;
+        case "/":
+          if (b === 0) return null;
+          return a / b;
+        default: return b;
+      }
+    }
+
+    function setOp(op) {
+      if (currentInput === "Error") return;
+      if (operation !== null && !shouldResetInput) {
+        calculate();
+      }
+      previousInput = parseFloat(currentInput);
+      operation = op;
+      shouldResetInput = true;
+    }
+
+    function calculate() {
+      if (operation === null || previousInput === null || shouldResetInput) {
+        return;
+      }
+      const secondOperand = parseFloat(currentInput);
+      const result = compute(previousInput, secondOperand, operation);
+
+      if (result === null) {
+        currentInput = "Error";
+      } else {
+        // Strip precision inaccuracies like 0.1 + 0.2 = 0.30000000000000004
+        currentInput = parseFloat(result.toPrecision(12)).toString();
+      }
+
+      previousInput = null;
+      operation = null;
+      shouldResetInput = true;
+      updateDisplay();
+    }
+
+    // Keyboard support
+    window.addEventListener("keydown", (e) => {
+      if ((e.key >= "0" && e.key <= "9")) {
+        appendNum(e.key);
+      } else if (e.key === ".") {
+        appendDot();
+      } else if (e.key === "+" || e.key === "-" || e.key === "*" || e.key === "/") {
+        setOp(e.key);
+      } else if (e.key === "Enter" || e.key === "=") {
+        e.preventDefault();
+        calculate();
+      } else if (e.key === "Backspace") {
+        deleteLast();
+      } else if (e.key === "Escape" || e.key.toLowerCase() === "c") {
+        clearAll();
+      }
+    });
+  </script>
+</body>
+</html>
