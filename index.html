@@ -2,138 +2,1426 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Pookie Glassy Calculator ✨</title>
   <style>
+    /* ==========================================================
+       THEME VARIABLES
+       ========================================================== */
+    :root {
+      /* Pookie Clay Theme (Default - Image 1) */
+      --bg-gradient: radial-gradient(circle at 50% 20%, #ffe4ec 0%, #601e32 45%, #ffb6ce 100%);
+      --orb-1: #ffb8d1;
+      --orb-2: #ffd9e8;
+      --orb-3: #ffa8c5;
+      --orb-4: #ffeaf3;
+
+      --calc-body-bg: linear-gradient(175deg, #ffbccc 0%, #ffa5be 50%, #ff94b2 100%);
+      --calc-body-border: #ffd5e2;
+      --calc-shadow: 
+        0 24px 45px -8px rgba(226, 96, 137, 0.4),
+        0 12px 20px -4px rgba(235, 110, 150, 0.25),
+        inset 0 4px 6px rgba(255, 255, 255, 0.75),
+        inset 0 -5px 10px rgba(195, 75, 108, 0.25);
+      --calc-radius: 46px;
+
+      --screen-bg: linear-gradient(180deg, #fff0f5 0%, #ffe8ef 100%);
+      --screen-border: #ffd2df;
+      --screen-shadow: 
+        inset 0 4px 8px rgba(206, 95, 127, 0.22),
+        inset 0 -2px 5px rgba(255, 255, 255, 0.8),
+        0 3px 6px rgba(255, 255, 255, 0.5);
+      --screen-text: #451a28;
+      --screen-subtext: #a86277;
+
+      --btn-num-bg: linear-gradient(180deg, #ffffff 0%, #fff2f5 100%);
+      --btn-num-color: #d6587c;
+      --btn-num-shadow: 
+        0 6px 0 #ebb1c1,
+        0 10px 14px rgba(212, 106, 137, 0.25),
+        inset 0 2px 2px #ffffff;
+      --btn-num-shadow-active: 
+        0 2px 0 #ebb1c1,
+        0 4px 6px rgba(212, 106, 137, 0.2),
+        inset 0 2px 2px #ffffff;
+
+      --btn-op-bg: linear-gradient(180deg, #ff8da8 0%, #ff7797 100%);
+      --btn-op-color: #ffffff;
+      --btn-op-shadow: 
+        0 6px 0 #d95679,
+        0 10px 15px rgba(189, 56, 92, 0.35),
+        inset 0 2px 3px rgba(255, 255, 255, 0.6);
+      --btn-op-shadow-active: 
+        0 2px 0 #d95679,
+        0 4px 6px rgba(189, 56, 92, 0.25),
+        inset 0 2px 3px rgba(255, 255, 255, 0.6);
+
+      --btn-fn-bg: linear-gradient(180deg, #ffe0ea 0%, #ffd0de 100%);
+      --btn-fn-color: #bd4a6e;
+      --btn-fn-shadow: 
+        0 6px 0 #e4adc0,
+        0 8px 12px rgba(204, 98, 129, 0.2),
+        inset 0 2px 2px #ffffff;
+      --btn-fn-shadow-active: 
+        0 2px 0 #e4adc0,
+        0 3px 5px rgba(204, 98, 129, 0.15),
+        inset 0 2px 2px #ffffff;
+
+      --btn-eq-bg: linear-gradient(180deg, #ff6b91 0%, #f6537d 100%);
+      --btn-eq-color: #ffffff;
+      --btn-eq-shadow: 
+        0 6px 0 #cc3a63,
+        0 12px 18px rgba(204, 49, 90, 0.4),
+        inset 0 2px 3px rgba(255, 255, 255, 0.7);
+      --btn-eq-shadow-active: 
+        0 2px 0 #cc3a63,
+        0 4px 6px rgba(204, 49, 90, 0.3),
+        inset 0 2px 3px rgba(255, 255, 255, 0.7);
+
+      --face-eye-color: #441a27;
+      --face-blush: #ff7599;
+      --gloss-opacity: 0.15;
+      --backdrop-blur: 0px;
+      --pill-border: none;
+    }
+
+    /* Crystal Glass Theme (Image 2) */
+    [data-theme="crystal-glass"] {
+      --bg-gradient: radial-gradient(circle at 50% 30%, #ffd6e8 0%, #f7b7d6 50%, #e895c2 100%);
+      --orb-1: rgba(255, 175, 215, 0.65);
+      --orb-2: rgba(230, 160, 255, 0.6);
+      --orb-3: rgba(255, 195, 230, 0.7);
+      --orb-4: rgba(215, 180, 255, 0.5);
+
+      --calc-body-bg: rgba(255, 255, 255, 0.35);
+      --calc-body-border: rgba(255, 255, 255, 0.75);
+      --calc-shadow: 
+        0 30px 60px -10px rgba(180, 80, 130, 0.35),
+        0 10px 25px rgba(255, 255, 255, 0.6),
+        inset 0 3px 6px rgba(255, 255, 255, 0.95),
+        inset 0 -4px 10px rgba(220, 120, 165, 0.3);
+      --calc-radius: 48px;
+
+      --screen-bg: rgba(255, 255, 255, 0.55);
+      --screen-border: rgba(255, 255, 255, 0.85);
+      --screen-shadow: 
+        inset 0 2px 6px rgba(180, 70, 120, 0.15),
+        inset 0 -2px 4px rgba(255, 255, 255, 0.9),
+        0 8px 16px rgba(220, 110, 160, 0.15);
+      --screen-text: #501d36;
+      --screen-subtext: #8e4769;
+
+      --btn-num-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.35) 100%);
+      --btn-num-color: #ffffff;
+      --btn-num-shadow: 
+        0 8px 20px rgba(195, 95, 140, 0.22),
+        inset 0 2px 3px rgba(255, 255, 255, 0.95),
+        inset 0 -2px 4px rgba(255, 190, 220, 0.4);
+      --btn-num-shadow-active: 
+        0 3px 8px rgba(195, 95, 140, 0.2),
+        inset 0 1px 2px rgba(255, 255, 255, 0.95);
+
+      --btn-op-bg: linear-gradient(135deg, rgba(255, 230, 242, 0.8) 0%, rgba(255, 185, 215, 0.6) 100%);
+      --btn-op-color: #ffffff;
+      --btn-op-shadow: 
+        0 8px 20px rgba(210, 75, 130, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.95),
+        inset 0 -2px 4px rgba(220, 80, 135, 0.3);
+      --btn-op-shadow-active: 
+        0 3px 8px rgba(210, 75, 130, 0.25),
+        inset 0 1px 2px rgba(255, 255, 255, 0.9);
+
+      --btn-fn-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 215, 235, 0.45) 100%);
+      --btn-fn-color: #ffffff;
+      --btn-fn-shadow: 
+        0 8px 18px rgba(185, 90, 135, 0.2),
+        inset 0 2px 3px rgba(255, 255, 255, 0.9);
+      --btn-fn-shadow-active: 
+        0 3px 6px rgba(185, 90, 135, 0.15),
+        inset 0 1px 2px rgba(255, 255, 255, 0.9);
+
+      --btn-eq-bg: linear-gradient(135deg, rgba(206, 130, 255, 0.9) 0%, rgba(170, 78, 250, 0.85) 100%);
+      --btn-eq-color: #ffffff;
+      --btn-eq-shadow: 
+        0 10px 25px rgba(160, 60, 240, 0.45),
+        inset 0 2px 5px rgba(255, 255, 255, 0.95),
+        inset 0 -3px 6px rgba(120, 30, 200, 0.4);
+      --btn-eq-shadow-active: 
+        0 4px 10px rgba(160, 60, 240, 0.35),
+        inset 0 1px 3px rgba(255, 255, 255, 0.9);
+
+      --face-eye-color: #531c38;
+      --face-blush: #ff5e91;
+      --gloss-opacity: 0.85;
+      --backdrop-blur: 24px;
+      --pill-border: 1.5px solid rgba(255, 255, 255, 0.85);
+    }
+
+    /* Strawberry Jelly Theme */
+    [data-theme="strawberry-jelly"] {
+      --bg-gradient: radial-gradient(circle at 50% 25%, #ffccd8 0%, #ff9ebb 50%, #f76896 100%);
+      --orb-1: #ff5289;
+      --orb-2: #ffa8c4;
+      --orb-3: #ff7ea6;
+      --orb-4: #ffd2e0;
+
+      --calc-body-bg: linear-gradient(165deg, rgba(255, 130, 170, 0.75) 0%, rgba(255, 80, 130, 0.7) 100%);
+      --calc-body-border: rgba(255, 255, 255, 0.65);
+      --calc-shadow: 
+        0 28px 55px rgba(210, 40, 95, 0.45),
+        inset 0 3px 6px rgba(255, 255, 255, 0.8),
+        inset 0 -5px 12px rgba(160, 15, 65, 0.4);
+      --calc-radius: 46px;
+
+      --screen-bg: rgba(255, 240, 245, 0.85);
+      --screen-border: rgba(255, 255, 255, 0.8);
+      --screen-shadow: 
+        inset 0 3px 6px rgba(180, 30, 80, 0.25),
+        0 6px 12px rgba(220, 40, 95, 0.2);
+      --screen-text: #3d0d1e;
+      --screen-subtext: #8d284d;
+
+      --btn-num-bg: linear-gradient(145deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 220, 232, 0.8) 100%);
+      --btn-num-color: #d82b64;
+      --btn-num-shadow: 
+        0 8px 18px rgba(190, 30, 80, 0.25),
+        inset 0 2px 3px #ffffff,
+        inset 0 -2px 4px rgba(240, 90, 140, 0.3);
+      --btn-num-shadow-active: 0 3px 8px rgba(190, 30, 80, 0.2);
+
+      --btn-op-bg: linear-gradient(145deg, #ff3b75 0%, #e61958 100%);
+      --btn-op-color: #ffffff;
+      --btn-op-shadow: 
+        0 8px 20px rgba(180, 15, 60, 0.4),
+        inset 0 2px 3px rgba(255, 255, 255, 0.7);
+      --btn-op-shadow-active: 0 3px 8px rgba(180, 15, 60, 0.3);
+
+      --btn-fn-bg: linear-gradient(145deg, rgba(255, 210, 225, 0.9) 0%, rgba(255, 175, 200, 0.8) 100%);
+      --btn-fn-color: #b3164a;
+      --btn-fn-shadow: 0 8px 16px rgba(180, 40, 85, 0.22);
+      --btn-fn-shadow-active: 0 3px 6px rgba(180, 40, 85, 0.15);
+
+      --btn-eq-bg: linear-gradient(145deg, #ff1a5f 0%, #c4003d 100%);
+      --btn-eq-color: #ffffff;
+      --btn-eq-shadow: 
+        0 10px 24px rgba(190, 0, 60, 0.5),
+        inset 0 2px 4px rgba(255, 255, 255, 0.7);
+      --btn-eq-shadow-active: 0 4px 8px rgba(190, 0, 60, 0.4);
+
+      --face-eye-color: #3b0819;
+      --face-blush: #ff296a;
+      --gloss-opacity: 0.75;
+      --backdrop-blur: 20px;
+      --pill-border: 1.5px solid rgba(255, 255, 255, 0.6);
+    }
+
+    /* Matcha Cream Theme */
+    [data-theme="matcha"] {
+      --bg-gradient: radial-gradient(circle at 50% 25%, #ebf7ea 0%, #d4eed2 50%, #b8e0b4 100%);
+      --orb-1: #9dd898;
+      --orb-2: #c6ebb9;
+      --orb-3: #8fcb89;
+      --orb-4: #e8f9e6;
+
+      --calc-body-bg: linear-gradient(170deg, #b9deb5 0%, #a4d29f 50%, #90c58a 100%);
+      --calc-body-border: #d4ebd0;
+      --calc-shadow: 
+        0 24px 45px -8px rgba(85, 140, 80, 0.35),
+        inset 0 4px 6px rgba(255, 255, 255, 0.75),
+        inset 0 -5px 10px rgba(65, 115, 60, 0.25);
+      --calc-radius: 46px;
+
+      --screen-bg: linear-gradient(180deg, #f4fbf3 0%, #e8f7e6 100%);
+      --screen-border: #cae8c6;
+      --screen-shadow: 
+        inset 0 4px 8px rgba(70, 120, 65, 0.18),
+        inset 0 -2px 4px #ffffff;
+      --screen-text: #1b3819;
+      --screen-subtext: #4a7547;
+
+      --btn-num-bg: linear-gradient(180deg, #ffffff 0%, #f1f9f0 100%);
+      --btn-num-color: #447a40;
+      --btn-num-shadow: 
+        0 6px 0 #abc8a7,
+        0 10px 14px rgba(75, 125, 70, 0.2),
+        inset 0 2px 2px #ffffff;
+      --btn-num-shadow-active: 0 2px 0 #abc8a7;
+
+      --btn-op-bg: linear-gradient(180deg, #7dbd76 0%, #68ac61 100%);
+      --btn-op-color: #ffffff;
+      --btn-op-shadow: 
+        0 6px 0 #4f8f48,
+        0 10px 15px rgba(60, 110, 55, 0.3),
+        inset 0 2px 3px rgba(255, 255, 255, 0.6);
+      --btn-op-shadow-active: 0 2px 0 #4f8f48;
+
+      --btn-fn-bg: linear-gradient(180deg, #d8ecd5 0%, #c5e4c1 100%);
+      --btn-fn-color: #3b6d37;
+      --btn-fn-shadow: 0 6px 0 #a6cca1;
+      --btn-fn-shadow-active: 0 2px 0 #a6cca1;
+
+      --btn-eq-bg: linear-gradient(180deg, #5aa352 0%, #468c3e 100%);
+      --btn-eq-color: #ffffff;
+      --btn-eq-shadow: 
+        0 6px 0 #33702c,
+        0 12px 18px rgba(45, 95, 40, 0.35);
+      --btn-eq-shadow-active: 0 2px 0 #33702c;
+
+      --face-eye-color: #1b3819;
+      --face-blush: #ff9cb0;
+      --gloss-opacity: 0.15;
+      --backdrop-blur: 0px;
+      --pill-border: none;
+    }
+
+    /* Lavender Dream Theme */
+    [data-theme="lavender"] {
+      --bg-gradient: radial-gradient(circle at 50% 25%, #f4edff 0%, #e3d5ff 50%, #ceb8ff 100%);
+      --orb-1: #c5aaff;
+      --orb-2: #e0d0ff;
+      --orb-3: #b692ff;
+      --orb-4: #f7f2ff;
+
+      --calc-body-bg: linear-gradient(170deg, #caaeff 0%, #b794fc 50%, #a47af7 100%);
+      --calc-body-border: #dfceff;
+      --calc-shadow: 
+        0 24px 45px -8px rgba(125, 75, 220, 0.38),
+        inset 0 4px 6px rgba(255, 255, 255, 0.75),
+        inset 0 -5px 10px rgba(95, 45, 180, 0.25);
+      --calc-radius: 46px;
+
+      --screen-bg: linear-gradient(180deg, #faf7ff 0%, #f0e8ff 100%);
+      --screen-border: #dcc8ff;
+      --screen-shadow: 
+        inset 0 4px 8px rgba(110, 65, 195, 0.18),
+        inset 0 -2px 4px #ffffff;
+      --screen-text: #2f1b53;
+      --screen-subtext: #69499e;
+
+      --btn-num-bg: linear-gradient(180deg, #ffffff 0%, #f6f0ff 100%);
+      --btn-num-color: #794ec2;
+      --btn-num-shadow: 
+        0 6px 0 #c2aee0,
+        0 10px 14px rgba(115, 70, 195, 0.2),
+        inset 0 2px 2px #ffffff;
+      --btn-num-shadow-active: 0 2px 0 #c2aee0;
+
+      --btn-op-bg: linear-gradient(180deg, #9b72f5 0%, #8555ee 100%);
+      --btn-op-color: #ffffff;
+      --btn-op-shadow: 
+        0 6px 0 #693bc9,
+        0 10px 15px rgba(95, 50, 185, 0.32),
+        inset 0 2px 3px rgba(255, 255, 255, 0.6);
+      --btn-op-shadow-active: 0 2px 0 #693bc9;
+
+      --btn-fn-bg: linear-gradient(180deg, #e7dbff 0%, #d8c4ff 100%);
+      --btn-fn-color: #6a3bbd;
+      --btn-fn-shadow: 0 6px 0 #bfaae3;
+      --btn-fn-shadow-active: 0 2px 0 #bfaae3;
+
+      --btn-eq-bg: linear-gradient(180deg, #7c44ea 0%, #662cd6 100%);
+      --btn-eq-color: #ffffff;
+      --btn-eq-shadow: 
+        0 6px 0 #4f1ba8,
+        0 12px 20px rgba(90, 30, 190, 0.4);
+      --btn-eq-shadow-active: 0 2px 0 #4f1ba8;
+
+      --face-eye-color: #2b184d;
+      --face-blush: #ff91b8;
+      --gloss-opacity: 0.15;
+      --backdrop-blur: 0px;
+      --pill-border: none;
+    }
+
+    /* Cyber Glass (Dark Kawaii) */
+    [data-theme="cyber-glass"] {
+      --bg-gradient: radial-gradient(circle at 50% 25%, #2a1635 0%, #170d20 50%, #0d0613 100%);
+      --orb-1: rgba(255, 95, 160, 0.35);
+      --orb-2: rgba(165, 80, 255, 0.3);
+      --orb-3: rgba(255, 140, 210, 0.25);
+      --orb-4: rgba(120, 50, 210, 0.3);
+
+      --calc-body-bg: rgba(45, 25, 55, 0.55);
+      --calc-body-border: rgba(255, 140, 200, 0.4);
+      --calc-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.7),
+        0 0 35px rgba(255, 105, 180, 0.25),
+        inset 0 2px 4px rgba(255, 255, 255, 0.35),
+        inset 0 -3px 8px rgba(0, 0, 0, 0.5);
+      --calc-radius: 46px;
+
+      --screen-bg: rgba(20, 10, 28, 0.85);
+      --screen-border: rgba(255, 130, 185, 0.35);
+      --screen-shadow: 
+        inset 0 3px 8px rgba(0, 0, 0, 0.7),
+        0 0 15px rgba(255, 105, 180, 0.2);
+      --screen-text: #ffe0ef;
+      --screen-subtext: #b87ca2;
+
+      --btn-num-bg: linear-gradient(135deg, rgba(80, 45, 100, 0.6) 0%, rgba(50, 25, 65, 0.6) 100%);
+      --btn-num-color: #ffffff;
+      --btn-num-shadow: 
+        0 8px 18px rgba(0, 0, 0, 0.4),
+        inset 0 1.5px 2px rgba(255, 180, 220, 0.4);
+      --btn-num-shadow-active: 0 2px 6px rgba(0, 0, 0, 0.4);
+
+      --btn-op-bg: linear-gradient(135deg, rgba(255, 75, 145, 0.8) 0%, rgba(220, 45, 115, 0.8) 100%);
+      --btn-op-color: #ffffff;
+      --btn-op-shadow: 
+        0 8px 20px rgba(255, 45, 130, 0.4),
+        inset 0 1.5px 2px rgba(255, 255, 255, 0.7);
+      --btn-op-shadow-active: 0 3px 8px rgba(255, 45, 130, 0.3);
+
+      --btn-fn-bg: linear-gradient(135deg, rgba(120, 60, 150, 0.6) 0%, rgba(85, 40, 110, 0.6) 100%);
+      --btn-fn-color: #ffd2ea;
+      --btn-fn-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
+      --btn-fn-shadow-active: 0 2px 6px rgba(0, 0, 0, 0.35);
+
+      --btn-eq-bg: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%);
+      --btn-eq-color: #ffffff;
+      --btn-eq-shadow: 
+        0 10px 25px rgba(168, 85, 247, 0.55),
+        inset 0 2px 4px rgba(255, 255, 255, 0.8);
+      --btn-eq-shadow-active: 0 3px 8px rgba(168, 85, 247, 0.4);
+
+      --face-eye-color: #ffe6f3;
+      --face-blush: #ff4585;
+      --gloss-opacity: 0.8;
+      --backdrop-blur: 24px;
+      --pill-border: 1px solid rgba(255, 140, 200, 0.3);
+    }
+
+    /* General Reset */
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace;
-      -webkit-font-smoothing: antialiased;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      font-family: 'Fredoka', 'Quicksand', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
     }
+
     body {
+      min-height: 100vh;
+      min-height: 100dvh;
+      background: var(--bg-gradient);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      overflow-x: hidden;
+      position: relative;
+      transition: background 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    /* Background Floating Orbs */
+    .ambient-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(55px);
+      opacity: 0.65;
+      animation: floatOrb 18s ease-in-out infinite alternate;
+      transition: background 0.8s ease;
+    }
+
+    .orb-1 {
+      width: 300px;
+      height: 300px;
+      background: var(--orb-1);
+      top: -50px;
+      left: -50px;
+      animation-duration: 16s;
+    }
+
+    .orb-2 {
+      width: 360px;
+      height: 360px;
+      background: var(--orb-2);
+      bottom: -90px;
+      right: -70px;
+      animation-duration: 22s;
+      animation-delay: -5s;
+    }
+
+    .orb-3 {
+      width: 240px;
+      height: 240px;
+      background: var(--orb-3);
+      bottom: 25%;
+      left: -50px;
+      animation-duration: 19s;
+      animation-delay: -8s;
+    }
+
+    .orb-4 {
+      width: 200px;
+      height: 200px;
+      background: var(--orb-4);
+      top: 20%;
+      right: -30px;
+      animation-duration: 14s;
+      animation-delay: -2s;
+    }
+
+    @keyframes floatOrb {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(45px, 35px) scale(1.08); }
+      100% { transform: translate(-30px, 60px) scale(0.94); }
+    }
+
+    /* Interactive Sparkle Canvas */
+    #particle-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    /* Container */
+    .app-wrapper {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      max-width: 380px;
+    }
+
+    /* Top Navigation / Controls Bar */
+    .top-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 6px 12px;
+      background: rgba(255, 255, 255, 0.45);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .theme-select-wrap {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .theme-icon {
+      font-size: 18px;
+    }
+
+    select#theme-picker {
+      background: transparent;
+      border: none;
+      font-size: 13px;
+      font-weight: 700;
+      color: #4a2131;
+      cursor: pointer;
+      outline: none;
+      padding: 4px 6px;
+    }
+
+    [data-theme="cyber-glass"] select#theme-picker {
+      color: #ffe6f3;
+    }
+
+    [data-theme="cyber-glass"] .top-toolbar {
+      background: rgba(40, 20, 50, 0.6);
+      border-color: rgba(255, 140, 200, 0.3);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .toolbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tool-btn {
+      background: rgba(255, 255, 255, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .tool-btn:hover {
+      transform: scale(1.1);
+      background: #ffffff;
+    }
+
+    .tool-btn:active {
+      transform: scale(0.92);
+    }
+
+    [data-theme="cyber-glass"] .tool-btn {
+      background: rgba(70, 35, 90, 0.7);
+      border-color: rgba(255, 140, 200, 0.4);
+      color: #fff;
+    }
+
+    /* Calculator Main Chassis */
+    .calculator {
+      width: 100%;
+      background: var(--calc-body-bg);
+      backdrop-filter: blur(var(--backdrop-blur));
+      -webkit-backdrop-filter: blur(var(--backdrop-blur));
+      border: 3px solid var(--calc-body-border);
+      border-radius: var(--calc-radius);
+      box-shadow: var(--calc-shadow);
+      padding: 20px 18px 22px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    /* Glass Specular Gloss Highlight */
+    .calc-sheen {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 48%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, var(--gloss-opacity)) 0%, rgba(255, 255, 255, 0) 100%);
+      pointer-events: none;
+      border-radius: inherit;
+      z-index: 3;
+    }
+
+    /* Screen Unit (Face + Display) */
+    .screen-housing {
+      background: var(--screen-bg);
+      border: 2px solid var(--screen-border);
+      border-radius: 28px;
+      box-shadow: var(--screen-shadow);
+      padding: 10px 14px 12px;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: all 0.4s ease;
+      cursor: pointer;
+    }
+
+    /* Pookie Interactive Kawaii Face */
+    .face-container {
+      width: 130px;
+      height: 42px;
+      margin-bottom: 2px;
+      cursor: pointer;
+      position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
-      background: #f0f0f0;
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
-    .calculator {
-      width: 300px;
-      background: #ffffff;
-      border: 2px solid #222222;
-      padding: 12px;
+
+    .face-container:hover {
+      transform: scale(1.08);
     }
-    #display {
+
+    .face-container:active {
+      transform: scale(0.95);
+    }
+
+    .face-svg {
       width: 100%;
-      height: 56px;
-      background: #fafafa;
-      border: 1px solid #999999;
-      margin-bottom: 12px;
-      padding: 8px 12px;
-      font-size: 28px;
-      text-align: right;
-      color: #111111;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      user-select: all;
+      height: 100%;
+      overflow: visible;
     }
-    .grid {
+
+    /* Eyes & Pupils */
+    .eye-white {
+      fill: var(--face-eye-color);
+      transition: fill 0.4s ease;
+    }
+
+    .pupil-sparkle {
+      fill: #ffffff;
+      transform-box: fill-box;
+      transition: transform 0.1s ease-out;
+    }
+
+    .pupil-sparkle-small {
+      fill: #ffffff;
+      opacity: 0.85;
+      transform-box: fill-box;
+    }
+
+    .eye-lid {
+      fill: var(--screen-bg);
+      transform-box: fill-box;
+      transform-origin: 50% 0%;
+      transform: scaleY(0);
+      transition: transform 0.12s ease;
+    }
+
+    /* Cheeks */
+    .cheek {
+      fill: var(--face-blush);
+      opacity: 0.85;
+      transform-box: fill-box;
+      transform-origin: 50% 50%;
+      transition: fill 0.4s ease, opacity 0.3s ease, transform 0.3s ease;
+      filter: blur(0.5px);
+    }
+
+    .face-container:hover .cheek {
+      opacity: 1;
+      transform: scale(1.18);
+    }
+
+    /* Mouth */
+    .mouth-path {
+      fill: none;
+      stroke: var(--face-eye-color);
+      stroke-width: 3.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: stroke 0.4s ease, d 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    /* Numeric Display Area */
+    .display-readout {
+      width: 100%;
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+    }
+
+    .history-text {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--screen-subtext);
+      min-height: 18px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      opacity: 0.9;
+      letter-spacing: 0.5px;
+      transition: color 0.4s ease;
+    }
+
+    .main-text {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--screen-text);
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: color 0.4s ease, font-size 0.15s ease;
+      word-break: break-all;
+    }
+
+    /* Keypad Grid */
+    .calc-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 6px;
+      gap: 10px;
+      position: relative;
+      z-index: 4;
     }
-    button {
-      height: 50px;
-      font-size: 20px;
-      font-weight: 500;
-      background: #e8e8e8;
-      color: #000000;
-      border: 1px solid #777777;
+
+    /* Keys / Buttons */
+    .key {
+      height: 56px;
+      border-radius: 22px;
+      border: var(--pill-border);
+      font-size: 22px;
+      font-weight: 700;
       cursor: pointer;
-      user-select: none;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      outline: none;
+      transition: transform 0.1s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.1s cubic-bezier(0.2, 0.8, 0.2, 1);
+      overflow: hidden;
     }
-    button:active {
-      background: #cccccc;
+
+    /* Glossy reflection on each key */
+    .key::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 48%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, var(--gloss-opacity)) 0%, rgba(255, 255, 255, 0) 100%);
+      border-radius: inherit;
+      pointer-events: none;
     }
-    button.op {
-      background: #d4d4d4;
-      font-weight: bold;
+
+    /* Key Types */
+    .key-num {
+      background: var(--btn-num-bg);
+      color: var(--btn-num-color);
+      box-shadow: var(--btn-num-shadow);
     }
-    button.op:active {
-      background: #bbbbbb;
+
+    .key-num:active, .key-num.pressed {
+      transform: translateY(4px) scale(0.96);
+      box-shadow: var(--btn-num-shadow-active);
     }
-    button.equal {
-      background: #333333;
-      color: #ffffff;
-      border-color: #000000;
+
+    .key-op {
+      background: var(--btn-op-bg);
+      color: var(--btn-op-color);
+      box-shadow: var(--btn-op-shadow);
+      font-size: 24px;
     }
-    button.equal:active {
-      background: #111111;
+
+    .key-op:active, .key-op.pressed {
+      transform: translateY(4px) scale(0.96);
+      box-shadow: var(--btn-op-shadow-active);
     }
-    button.clear {
-      background: #e0e0e0;
-      color: #b00000;
-      font-weight: bold;
+
+    .key-fn {
+      background: var(--btn-fn-bg);
+      color: var(--btn-fn-color);
+      box-shadow: var(--btn-fn-shadow);
+      font-size: 19px;
     }
-    .span-2 {
-      grid-column: span 2;
+
+    .key-fn:active, .key-fn.pressed {
+      transform: translateY(4px) scale(0.96);
+      box-shadow: var(--btn-fn-shadow-active);
+    }
+
+    .key-eq {
+      background: var(--btn-eq-bg);
+      color: var(--btn-eq-color);
+      box-shadow: var(--btn-eq-shadow);
+      font-size: 26px;
+    }
+
+    .key-eq:active, .key-eq.pressed {
+      transform: translateY(4px) scale(0.96);
+      box-shadow: var(--btn-eq-shadow-active);
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 13px;
+      color: #3b1828;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      pointer-events: none;
+      transform: translateY(50px) scale(0.9);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      z-index: 100;
+    }
+
+    .toast.show {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+
+    /* Floating Bubble Badges */
+    .theme-banner {
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(70, 30, 45, 0.7);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 2px;
+    }
+
+    [data-theme="cyber-glass"] .theme-banner {
+      color: rgba(255, 200, 230, 0.75);
+    }
+
+    /* Squishy Wobble Animation on Click */
+    @keyframes squish {
+      0% { transform: scale(1); }
+      35% { transform: scale(1.14, 0.88); }
+      65% { transform: scale(0.92, 1.12); }
+      100% { transform: scale(1); }
+    }
+
+    .squish {
+      animation: squish 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
   </style>
 </head>
 <body>
-  <div class="calculator">
-    <div id="display">0</div>
-    <div class="grid">
-      <button class="clear" onclick="clearAll()">C</button>
-      <button onclick="deleteLast()">DEL</button>
-      <button class="op" onclick="setOp('/')">/</button>
-      <button class="op" onclick="setOp('*')">*</button>
 
-      <button onclick="appendNum('7')">7</button>
-      <button onclick="appendNum('8')">8</button>
-      <button onclick="appendNum('9')">9</button>
-      <button class="op" onclick="setOp('-')">-</button>
+  <!-- Background Orbs -->
+  <div class="ambient-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="orb orb-4"></div>
+  </div>
 
-      <button onclick="appendNum('4')">4</button>
-      <button onclick="appendNum('5')">5</button>
-      <button onclick="appendNum('6')">6</button>
-      <button class="op" onclick="setOp('+')">+</button>
+  <!-- Particle / Sparkle Canvas -->
+  <canvas id="particle-canvas"></canvas>
 
-      <button onclick="appendNum('1')">1</button>
-      <button onclick="appendNum('2')">2</button>
-      <button onclick="appendNum('3')">3</button>
-      <button class="equal" onclick="calculate()">=</button>
+  <div class="app-wrapper">
+    <!-- Top Floating Toolbar -->
+    <div class="top-toolbar">
+      <div class="theme-select-wrap">
+        <span class="theme-icon" id="theme-emoji">🎀</span>
+        <select id="theme-picker" aria-label="Select Theme" onchange="handleThemeChange(this.value)">
+          <option value="pookie-clay" selected>Pookie Clay (Image 1)</option>
+          <option value="crystal-glass">Crystal Glass (Image 2)</option>
+          <option value="strawberry-jelly">Strawberry Jelly</option>
+          <option value="matcha">Matcha Latte</option>
+          <option value="lavender">Lavender Dream</option>
+          <option value="cyber-glass">Cyber Neon Glass</option>
+        </select>
+      </div>
 
-      <button class="span-2" onclick="appendNum('0')">0</button>
-      <button onclick="appendDot()">.</button>
-      <button class="equal" onclick="calculate()">=</button>
+      <div class="toolbar-actions">
+        <button class="tool-btn" id="sound-btn" onclick="toggleSound()" title="Toggle Sound">🔊</button>
+        <button class="tool-btn" id="copy-btn" onclick="copyResult()" title="Copy Result">📋</button>
+      </div>
+    </div>
+
+    <!-- Calculator Body -->
+    <div class="calculator" id="calculator">
+      <!-- Glass sheen reflex -->
+      <div class="calc-sheen"></div>
+
+      <!-- Recessed Screen Area -->
+      <div class="screen-housing" onclick="boopFace()" title="Click face or screen to boop! 💕">
+        <!-- Interactive Pookie Face (Blinks, Tracks Mouse, Expresses Emotion) -->
+        <div class="face-container" id="pookie-face">
+          <svg class="face-svg" viewBox="0 0 160 55" id="face-svg">
+            <!-- Cheeks -->
+            <ellipse class="cheek" id="cheek-left" cx="24" cy="36" rx="9" ry="6" />
+            <ellipse class="cheek" id="cheek-right" cx="136" cy="36" rx="9" ry="6" />
+
+            <!-- Left Eye -->
+            <g id="eye-group-left" transform="translate(48, 22)">
+              <circle class="eye-white" cx="0" cy="0" r="11" />
+              <!-- Pupils with catchlights -->
+              <g id="pupil-left">
+                <circle class="pupil-sparkle" cx="2.6" cy="-2.6" r="4.2" />
+                <circle class="pupil-sparkle-small" cx="-3.2" cy="3" r="2.2" />
+              </g>
+              <!-- Eyelid for blinking -->
+              <rect class="eye-lid" id="lid-left" x="-12" y="-12" width="24" height="24" />
+            </g>
+
+            <!-- Right Eye -->
+            <g id="eye-group-right" transform="translate(112, 22)">
+              <circle class="eye-white" cx="0" cy="0" r="11" />
+              <!-- Pupils with catchlights -->
+              <g id="pupil-right">
+                <circle class="pupil-sparkle" cx="2.6" cy="-2.6" r="4.2" />
+                <circle class="pupil-sparkle-small" cx="-3.2" cy="3" r="2.2" />
+              </g>
+              <!-- Eyelid for blinking -->
+              <rect class="eye-lid" id="lid-right" x="-12" y="-12" width="24" height="24" />
+            </g>
+
+            <!-- Cute Mouth -->
+            <path class="mouth-path" id="mouth" d="M 72 26 Q 80 34 88 26" />
+          </svg>
+        </div>
+
+        <!-- Numbers Readout -->
+        <div class="display-readout">
+          <div class="history-text" id="history-display"></div>
+          <div class="main-text" id="main-display">0</div>
+        </div>
+      </div>
+
+      <!-- Keypad Grid (Full with inline onclick fallbacks) -->
+      <div class="calc-grid" id="calc-grid">
+        <!-- Row 1 -->
+        <button class="key key-fn" data-action="clear" onclick="clearAll()" title="Clear">C</button>
+        <button class="key key-fn" data-action="delete" onclick="deleteLast()" title="Backspace">DEL</button>
+        <button class="key key-fn" data-action="percent" onclick="applyPercent()" title="Percent">%</button>
+        <button class="key key-op" data-action="op" data-op="/" onclick="setOp('/')" title="Divide">÷</button>
+
+        <!-- Row 2 -->
+        <button class="key key-num" data-num="7" onclick="appendNum('7')">7</button>
+        <button class="key key-num" data-num="8" onclick="appendNum('8')">8</button>
+        <button class="key key-num" data-num="9" onclick="appendNum('9')">9</button>
+        <button class="key key-op" data-action="op" data-op="*" onclick="setOp('*')" title="Multiply">×</button>
+
+        <!-- Row 3 -->
+        <button class="key key-num" data-num="4" onclick="appendNum('4')">4</button>
+        <button class="key key-num" data-num="5" onclick="appendNum('5')">5</button>
+        <button class="key key-num" data-num="6" onclick="appendNum('6')">6</button>
+        <button class="key key-op" data-action="op" data-op="-" onclick="setOp('-')" title="Subtract">−</button>
+
+        <!-- Row 4 -->
+        <button class="key key-num" data-num="1" onclick="appendNum('1')">1</button>
+        <button class="key key-num" data-num="2" onclick="appendNum('2')">2</button>
+        <button class="key key-num" data-num="3" onclick="appendNum('3')">3</button>
+        <button class="key key-op" data-action="op" data-op="+" onclick="setOp('+')" title="Add">+</button>
+
+        <!-- Row 5 -->
+        <button class="key key-fn" data-action="negate" onclick="toggleSign()" title="Positive/Negative">±</button>
+        <button class="key key-num" data-num="0" onclick="appendNum('0')">0</button>
+        <button class="key key-num" data-action="dot" onclick="appendDot()">.</button>
+        <button class="key key-eq" data-action="calculate" onclick="calculate(true)" title="Equal">=</button>
+      </div>
+    </div>
+
+    <!-- Theme Footnote -->
+    <div class="theme-banner">
+      <span>✨ Soft Squishy Pookie & Liquid Glass Aesthetic ✨</span>
     </div>
   </div>
 
+  <!-- Toast Alert -->
+  <div class="toast" id="toast">Copied to clipboard! 💕</div>
+
   <script>
+    /* ==========================================================
+       SAFE STORAGE WRAPPER (Never throws SecurityError)
+       ========================================================== */
+    const safeStorage = {
+      get(key, fallback = null) {
+        try {
+          if (typeof window !== "undefined" && window.localStorage) {
+            return window.localStorage.getItem(key) ?? fallback;
+          }
+        } catch (e) {}
+        return fallback;
+      },
+      set(key, val) {
+        try {
+          if (typeof window !== "undefined" && window.localStorage) {
+            window.localStorage.setItem(key, val);
+          }
+        } catch (e) {}
+      }
+    };
+
+    /* ==========================================================
+       CALCULATOR STATE
+       ========================================================== */
     let currentInput = "0";
     let previousInput = null;
-    let operation = null;
+    let currentOperation = null;
     let shouldResetInput = false;
+    let soundEnabled = true;
 
-    const display = document.getElementById("display");
+    // DOM Elements
+    const mainDisplay = document.getElementById("main-display");
+    const historyDisplay = document.getElementById("history-display");
+    const themePicker = document.getElementById("theme-picker");
+    const themeEmoji = document.getElementById("theme-emoji");
+    const soundBtn = document.getElementById("sound-btn");
+    const toast = document.getElementById("toast");
+    const pookieFace = document.getElementById("pookie-face");
+    const mouth = document.getElementById("mouth");
+    const cheekLeft = document.getElementById("cheek-left");
+    const cheekRight = document.getElementById("cheek-right");
+    const pupilLeft = document.getElementById("pupil-left");
+    const pupilRight = document.getElementById("pupil-right");
+    const lidLeft = document.getElementById("lid-left");
+    const lidRight = document.getElementById("lid-right");
+    const canvas = document.getElementById("particle-canvas");
+    const ctx = canvas ? canvas.getContext("2d") : null;
 
+    /* ==========================================================
+       PARTICLE ENGINE (Declared before themes/actions)
+       ========================================================== */
+    const particles = [];
+    const sparkleColors = ["#ff7ba5", "#ffa3c0", "#ffc2d4", "#c084fc", "#ffd700", "#ffffff"];
+
+    function celebrateSparkles(x, y, count = 25) {
+      if (!ctx) return;
+      for (let i = 0; i < count; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const speed = Math.random() * 5 + 2;
+        particles.push({
+          x: x,
+          y: y,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed - 1.5,
+          size: Math.random() * 8 + 4,
+          color: sparkleColors[Math.floor(Math.random() * sparkleColors.length)],
+          isHeart: Math.random() > 0.5,
+          rotation: Math.random() * Math.PI * 2,
+          vRot: (Math.random() - 0.5) * 0.15,
+          alpha: 1,
+          life: 1,
+          decay: Math.random() * 0.02 + 0.015
+        });
+      }
+    }
+
+    /* ==========================================================
+       THEMES
+       ========================================================== */
+    const themeEmojis = {
+      "pookie-clay": "🎀",
+      "crystal-glass": "💎",
+      "strawberry-jelly": "🍓",
+      "matcha": "🍵",
+      "lavender": "💜",
+      "cyber-glass": "🌙"
+    };
+
+    function applyTheme(themeName, triggerSparkles = false) {
+      if (!themeName || themeName === "pookie-clay") {
+        document.documentElement.removeAttribute("data-theme");
+      } else {
+        document.documentElement.setAttribute("data-theme", themeName);
+      }
+      if (themeEmoji) {
+        themeEmoji.textContent = themeEmojis[themeName] || "✨";
+      }
+      safeStorage.set("pookie_calc_theme", themeName);
+      if (triggerSparkles) {
+        celebrateSparkles(window.innerWidth / 2, window.innerHeight / 2, 20);
+      }
+    }
+
+    function handleThemeChange(val) {
+      applyTheme(val, true);
+      playSound("pop");
+    }
+
+    // Initialize saved theme safely
+    const savedTheme = safeStorage.get("pookie_calc_theme", "pookie-clay");
+    if (themePicker) themePicker.value = savedTheme;
+    applyTheme(savedTheme, false);
+
+    /* ==========================================================
+       AUDIO SYNTHESIZER (Web Audio API)
+       Protected against all browser permission/sandbox blocks
+       ========================================================== */
+    let audioCtx = null;
+
+    function playSound(type) {
+      if (!soundEnabled) return;
+      try {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContextClass) return;
+        if (!audioCtx) {
+          audioCtx = new AudioContextClass();
+        }
+        if (audioCtx.state === "suspended") {
+          audioCtx.resume().catch(() => {});
+        }
+        const now = audioCtx.currentTime;
+
+        if (type === "pop") {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = "sine";
+          osc.frequency.setValueAtTime(600, now);
+          osc.frequency.exponentialRampToValueAtTime(260, now + 0.08);
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(now);
+          osc.stop(now + 0.08);
+        } else if (type === "op") {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = "triangle";
+          osc.frequency.setValueAtTime(450, now);
+          osc.frequency.exponentialRampToValueAtTime(850, now + 0.1);
+          gain.gain.setValueAtTime(0.18, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(now);
+          osc.stop(now + 0.1);
+        } else if (type === "equal") {
+          const notes = [523.25, 659.25, 783.99, 1046.50];
+          notes.forEach((freq, idx) => {
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            const start = now + idx * 0.055;
+            osc.type = "sine";
+            osc.frequency.setValueAtTime(freq, start);
+            gain.gain.setValueAtTime(0.14, start);
+            gain.gain.exponentialRampToValueAtTime(0.001, start + 0.22);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start(start);
+            osc.stop(start + 0.22);
+          });
+        } else if (type === "clear") {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = "sine";
+          osc.frequency.setValueAtTime(600, now);
+          osc.frequency.exponentialRampToValueAtTime(140, now + 0.12);
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(now);
+          osc.stop(now + 0.12);
+        } else if (type === "boop") {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = "sine";
+          osc.frequency.setValueAtTime(880, now);
+          osc.frequency.exponentialRampToValueAtTime(1200, now + 0.08);
+          gain.gain.setValueAtTime(0.18, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(now);
+          osc.stop(now + 0.08);
+        }
+      } catch (err) {}
+    }
+
+    function toggleSound() {
+      soundEnabled = !soundEnabled;
+      if (soundBtn) {
+        soundBtn.textContent = soundEnabled ? "🔊" : "🔇";
+      }
+      showToast(soundEnabled ? "Sound On 🎵" : "Muted 🤫");
+    }
+
+    /* ==========================================================
+       POOKIE FACE MOODS & EXPRESSIONS
+       ========================================================== */
+    const mouthShapes = {
+      happy: "M 72 26 Q 80 34 88 26",
+      veryHappy: "M 70 25 Q 80 40 90 25",
+      surprised: "M 76 30 A 4 5 0 1 0 76 30.1 Z",
+      wink: "M 72 27 Q 80 33 88 27",
+      error: "M 72 32 Q 80 24 88 32"
+    };
+
+    let faceTimer = null;
+    function setFaceExpression(mood, duration = 1200) {
+      if (!mouth) return;
+      if (mouthShapes[mood]) {
+        mouth.setAttribute("d", mouthShapes[mood]);
+      }
+      if (cheekLeft && cheekRight) {
+        if (mood === "veryHappy") {
+          cheekLeft.style.transform = "scale(1.35)";
+          cheekRight.style.transform = "scale(1.35)";
+        } else {
+          cheekLeft.style.transform = "scale(1)";
+          cheekRight.style.transform = "scale(1)";
+        }
+      }
+      if (duration > 0) {
+        clearTimeout(faceTimer);
+        faceTimer = setTimeout(() => {
+          if (mouth) mouth.setAttribute("d", mouthShapes.happy);
+          if (cheekLeft) cheekLeft.style.transform = "scale(1)";
+          if (cheekRight) cheekRight.style.transform = "scale(1)";
+        }, duration);
+      }
+    }
+
+    // Natural blinking loop
+    function naturalBlink() {
+      if (lidLeft && lidRight) {
+        lidLeft.style.transform = "scaleY(1)";
+        lidRight.style.transform = "scaleY(1)";
+        setTimeout(() => {
+          if (lidLeft) lidLeft.style.transform = "scaleY(0)";
+          if (lidRight) lidRight.style.transform = "scaleY(0)";
+        }, 150);
+      }
+      const nextBlink = Math.random() * 4000 + 2500;
+      setTimeout(naturalBlink, nextBlink);
+    }
+    setTimeout(naturalBlink, 2000);
+
+    // Boop face action
+    function boopFace() {
+      setFaceExpression("veryHappy", 1800);
+      playSound("boop");
+      if (pookieFace) {
+        pookieFace.classList.add("squish");
+        setTimeout(() => pookieFace.classList.remove("squish"), 400);
+        const rect = pookieFace.getBoundingClientRect();
+        celebrateSparkles(rect.left + rect.width / 2, rect.top + rect.height / 2, 20);
+      }
+      showToast("Hehe! You booped me! 💕");
+    }
+
+    // Mouse tracking for pupils
+    window.addEventListener("mousemove", (e) => {
+      if (!pookieFace || !pupilLeft || !pupilRight) return;
+      const rect = pookieFace.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const angle = Math.atan2(e.clientY - cy, e.clientX - cx);
+      const dist = Math.min(3.5, Math.hypot(e.clientX - cx, e.clientY - cy) / 60);
+      const ox = Math.cos(angle) * dist;
+      const oy = Math.sin(angle) * dist;
+      pupilLeft.style.transform = `translate(${ox}px, ${oy}px)`;
+      pupilRight.style.transform = `translate(${ox}px, ${oy}px)`;
+    });
+
+    /* ==========================================================
+       SPARKLE CONFETTI CANVAS
+       ========================================================== */
+    function resizeCanvas() {
+      if (!canvas) return;
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    function drawHeart(c, x, y, size) {
+      c.beginPath();
+      const topCurveHeight = size * 0.3;
+      c.moveTo(x, y + topCurveHeight);
+      c.bezierCurveTo(x, y, x - size / 2, y, x - size / 2, y + topCurveHeight);
+      c.bezierCurveTo(x - size / 2, y + (size + topCurveHeight) / 2, x, y + size, x, y + size);
+      c.bezierCurveTo(x, y + size, x + size / 2, y + (size + topCurveHeight) / 2, x + size / 2, y + topCurveHeight);
+      c.bezierCurveTo(x + size / 2, y, x, y, x, y + topCurveHeight);
+      c.closePath();
+      c.fill();
+    }
+
+    function renderParticles() {
+      if (!ctx || !canvas) return;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.12;
+        p.rotation += p.vRot;
+        p.life -= p.decay;
+        p.alpha = Math.max(0, p.life);
+
+        ctx.save();
+        ctx.globalAlpha = p.alpha;
+        ctx.fillStyle = p.color;
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rotation);
+
+        if (p.isHeart) {
+          drawHeart(ctx, -p.size / 2, -p.size / 2, p.size);
+        } else {
+          ctx.beginPath();
+          for (let s = 0; s < 4; s++) {
+            ctx.lineTo(Math.cos(s * Math.PI / 2) * p.size, Math.sin(s * Math.PI / 2) * p.size);
+            ctx.lineTo(Math.cos(s * Math.PI / 2 + Math.PI / 4) * (p.size * 0.3), Math.sin(s * Math.PI / 2 + Math.PI / 4) * (p.size * 0.3));
+          }
+          ctx.closePath();
+          ctx.fill();
+        }
+        ctx.restore();
+
+        if (p.life <= 0) {
+          particles.splice(i, 1);
+        }
+      }
+
+      requestAnimationFrame(renderParticles);
+    }
+    requestAnimationFrame(renderParticles);
+
+    /* ==========================================================
+       CALCULATOR CORE LOGIC
+       ========================================================== */
     function updateDisplay() {
-      display.textContent = currentInput;
+      if (!mainDisplay) return;
+      mainDisplay.textContent = currentInput;
+
+      if (currentInput.length > 11) {
+        mainDisplay.style.fontSize = "22px";
+      } else if (currentInput.length > 8) {
+        mainDisplay.style.fontSize = "28px";
+      } else {
+        mainDisplay.style.fontSize = "36px";
+      }
+
+      if (historyDisplay) {
+        if (previousInput !== null && currentOperation) {
+          const opSymbol = currentOperation === "*" ? "×" : currentOperation === "/" ? "÷" : currentOperation === "-" ? "−" : "+";
+          historyDisplay.textContent = `${previousInput} ${opSymbol}`;
+        } else {
+          historyDisplay.textContent = "";
+        }
+      }
+    }
+
+    function appendNum(num) {
+      playSound("pop");
+      if (currentInput === "Error" || shouldResetInput) {
+        currentInput = num;
+        shouldResetInput = false;
+      } else {
+        if (currentInput === "0") {
+          currentInput = num;
+        } else if (currentInput.length < 15) {
+          currentInput += num;
+        }
+      }
+      setFaceExpression("happy", 500);
+      updateDisplay();
+    }
+
+    function appendDot() {
+      playSound("pop");
+      if (currentInput === "Error" || shouldResetInput) {
+        currentInput = "0.";
+        shouldResetInput = false;
+      } else if (!currentInput.includes(".")) {
+        currentInput += ".";
+      }
+      updateDisplay();
     }
 
     function clearAll() {
+      playSound("clear");
       currentInput = "0";
       previousInput = null;
-      operation = null;
+      currentOperation = null;
       shouldResetInput = false;
+      setFaceExpression("surprised", 800);
       updateDisplay();
     }
 
     function deleteLast() {
+      playSound("pop");
       if (shouldResetInput || currentInput === "Error") {
         clearAll();
         return;
@@ -146,24 +1434,33 @@
       updateDisplay();
     }
 
-    function appendNum(num) {
-      if (currentInput === "Error" || shouldResetInput) {
-        currentInput = num;
-        shouldResetInput = false;
+    function toggleSign() {
+      playSound("pop");
+      if (currentInput === "Error" || currentInput === "0") return;
+      if (currentInput.startsWith("-")) {
+        currentInput = currentInput.slice(1);
       } else {
-        currentInput = currentInput === "0" ? num : currentInput + num;
+        currentInput = "-" + currentInput;
       }
       updateDisplay();
     }
 
-    function appendDot() {
-      if (shouldResetInput || currentInput === "Error") {
-        currentInput = "0.";
-        shouldResetInput = false;
-      } else if (!currentInput.includes(".")) {
-        currentInput += ".";
+    function applyPercent() {
+      playSound("op");
+      if (currentInput === "Error") return;
+      const val = parseFloat(currentInput);
+      if (previousInput !== null && currentOperation) {
+        const percentVal = (previousInput * val) / 100;
+        currentInput = cleanNumber(percentVal);
+      } else {
+        currentInput = cleanNumber(val / 100);
       }
       updateDisplay();
+    }
+
+    function cleanNumber(num) {
+      if (isNaN(num) || !isFinite(num)) return "Error";
+      return parseFloat(num.toPrecision(12)).toString();
     }
 
     function compute(a, b, op) {
@@ -179,52 +1476,150 @@
     }
 
     function setOp(op) {
+      playSound("op");
       if (currentInput === "Error") return;
-      if (operation !== null && !shouldResetInput) {
-        calculate();
+
+      if (currentOperation !== null && !shouldResetInput) {
+        calculate(false);
       }
+
       previousInput = parseFloat(currentInput);
-      operation = op;
+      currentOperation = op;
       shouldResetInput = true;
+      setFaceExpression("wink", 600);
+      updateDisplay();
     }
 
-    function calculate() {
-      if (operation === null || previousInput === null || shouldResetInput) {
+    function calculate(emitCelebration = true) {
+      if (currentOperation === null || previousInput === null || shouldResetInput) {
         return;
       }
+
       const secondOperand = parseFloat(currentInput);
-      const result = compute(previousInput, secondOperand, operation);
+      const result = compute(previousInput, secondOperand, currentOperation);
 
       if (result === null) {
         currentInput = "Error";
+        playSound("clear");
+        setFaceExpression("error", 2000);
       } else {
-        // Strip precision inaccuracies like 0.1 + 0.2 = 0.30000000000000004
-        currentInput = parseFloat(result.toPrecision(12)).toString();
+        currentInput = cleanNumber(result);
+        if (emitCelebration) {
+          playSound("equal");
+          setFaceExpression("veryHappy", 2500);
+
+          const eqKey = document.querySelector(".key-eq");
+          if (eqKey) {
+            const rect = eqKey.getBoundingClientRect();
+            celebrateSparkles(rect.left + rect.width / 2, rect.top + rect.height / 2, 35);
+          }
+        }
       }
 
       previousInput = null;
-      operation = null;
+      currentOperation = null;
       shouldResetInput = true;
       updateDisplay();
     }
 
-    // Keyboard support
+    /* ==========================================================
+       KEYBOARD SUPPORT
+       ========================================================== */
     window.addEventListener("keydown", (e) => {
-      if ((e.key >= "0" && e.key <= "9")) {
+      let keySelector = null;
+
+      if (e.key >= "0" && e.key <= "9") {
         appendNum(e.key);
-      } else if (e.key === ".") {
+        keySelector = `[data-num="${e.key}"]`;
+      } else if (e.key === "." || e.key === ",") {
         appendDot();
+        keySelector = `[data-action="dot"]`;
       } else if (e.key === "+" || e.key === "-" || e.key === "*" || e.key === "/") {
         setOp(e.key);
+        keySelector = `[data-op="${e.key}"]`;
       } else if (e.key === "Enter" || e.key === "=") {
         e.preventDefault();
-        calculate();
+        calculate(true);
+        keySelector = `[data-action="calculate"]`;
       } else if (e.key === "Backspace") {
         deleteLast();
+        keySelector = `[data-action="delete"]`;
       } else if (e.key === "Escape" || e.key.toLowerCase() === "c") {
         clearAll();
+        keySelector = `[data-action="clear"]`;
+      } else if (e.key === "%") {
+        applyPercent();
+        keySelector = `[data-action="percent"]`;
+      }
+
+      if (keySelector) {
+        const btn = document.querySelector(keySelector);
+        if (btn) {
+          btn.classList.add("pressed");
+          setTimeout(() => btn.classList.remove("pressed"), 150);
+        }
       }
     });
+
+    /* ==========================================================
+       CLIPBOARD & TOAST (Works offline & in all browsers)
+       ========================================================== */
+    let toastTimer = null;
+    function showToast(message) {
+      if (!toast) return;
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.remove("show");
+      }, 2000);
+    }
+
+    function copyResult() {
+      if (!currentInput || currentInput === "Error") return;
+      playSound("pop");
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(currentInput)
+          .then(() => showToast(`Copied ${currentInput} to clipboard! 💕`))
+          .catch(() => fallbackCopy(currentInput));
+      } else {
+        fallbackCopy(currentInput);
+      }
+    }
+
+    function fallbackCopy(text) {
+      try {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        document.body.removeChild(ta);
+        showToast(`Copied ${text}! 💕`);
+      } catch (err) {
+        showToast(`Result: ${text} 💕`);
+      }
+    }
+
+    // Expose functions globally for inline onclick attributes
+    window.appendNum = appendNum;
+    window.setOp = setOp;
+    window.calculate = calculate;
+    window.clearAll = clearAll;
+    window.deleteLast = deleteLast;
+    window.appendDot = appendDot;
+    window.toggleSign = toggleSign;
+    window.applyPercent = applyPercent;
+    window.boopFace = boopFace;
+    window.handleThemeChange = handleThemeChange;
+    window.toggleSound = toggleSound;
+    window.copyResult = copyResult;
+
+    // Initialize display on load
+    updateDisplay();
   </script>
 </body>
 </html>
